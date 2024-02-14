@@ -1,6 +1,6 @@
 ﻿namespace App_Portomadero
 {
-    partial class Menu
+    partial class fmrMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tsControl = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tcControl = new MaterialSkin.Controls.MaterialTabControl();
             this.HOME = new System.Windows.Forms.TabPage();
             this.lbNombre = new System.Windows.Forms.Label();
@@ -48,11 +48,15 @@
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.INVENTARIO = new System.Windows.Forms.TabPage();
+            this.btnInventario = new System.Windows.Forms.Button();
+            this.btnProducto = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.RESERVAS = new System.Windows.Forms.TabPage();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.ACERCA_DE = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.tcControl.SuspendLayout();
             this.HOME.SuspendLayout();
@@ -63,29 +67,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.INVENTARIO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.RESERVAS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tsControl);
+            this.panel1.Controls.Add(this.materialTabSelector1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 54);
             this.panel1.TabIndex = 7;
             // 
-            // tsControl
+            // materialTabSelector1
             // 
-            this.tsControl.BaseTabControl = this.tcControl;
-            this.tsControl.Depth = 0;
-            this.tsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tsControl.Location = new System.Drawing.Point(0, 0);
-            this.tsControl.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tsControl.Name = "tsControl";
-            this.tsControl.Size = new System.Drawing.Size(800, 54);
-            this.tsControl.TabIndex = 17;
-            this.tsControl.Text = "materialTabSelector1";
+            this.materialTabSelector1.BaseTabControl = this.tcControl;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialTabSelector1.Location = new System.Drawing.Point(0, 0);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(800, 54);
+            this.materialTabSelector1.TabIndex = 0;
+            this.materialTabSelector1.Text = "materialTabSelector1";
             // 
             // tcControl
             // 
@@ -94,7 +100,8 @@
             this.tcControl.Controls.Add(this.PERSONAL);
             this.tcControl.Controls.Add(this.INVENTARIO);
             this.tcControl.Controls.Add(this.RESERVAS);
-            this.tcControl.Controls.Add(this.ACERCA_DE);
+            this.tcControl.Controls.Add(this.tabPage1);
+            this.tcControl.Controls.Add(this.tabPage2);
             this.tcControl.Depth = 0;
             this.tcControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcControl.Location = new System.Drawing.Point(0, 54);
@@ -191,6 +198,7 @@
             this.btnListaFac.Text = "Lista de facturas";
             this.btnListaFac.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnListaFac.UseVisualStyleBackColor = true;
+            this.btnListaFac.Click += new System.EventHandler(this.btnListaFac_Click);
             // 
             // pictureBox2
             // 
@@ -216,6 +224,7 @@
             this.btnPedido.Text = "Pedido";
             this.btnPedido.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPedido.UseVisualStyleBackColor = true;
+            this.btnPedido.Click += new System.EventHandler(this.btnPedido_Click);
             // 
             // btnFacturar
             // 
@@ -231,6 +240,7 @@
             this.btnFacturar.Text = "Facturar";
             this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // PERSONAL
             // 
@@ -318,6 +328,8 @@
             // 
             // INVENTARIO
             // 
+            this.INVENTARIO.Controls.Add(this.btnInventario);
+            this.INVENTARIO.Controls.Add(this.btnProducto);
             this.INVENTARIO.Controls.Add(this.pictureBox4);
             this.INVENTARIO.Location = new System.Drawing.Point(4, 22);
             this.INVENTARIO.Name = "INVENTARIO";
@@ -325,6 +337,37 @@
             this.INVENTARIO.TabIndex = 3;
             this.INVENTARIO.Text = "INVENTARIO";
             this.INVENTARIO.UseVisualStyleBackColor = true;
+            // 
+            // btnInventario
+            // 
+            this.btnInventario.BackgroundImage = global::App_Portomadero.Properties.Resources.inventario;
+            this.btnInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnInventario.FlatAppearance.BorderSize = 0;
+            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventario.Location = new System.Drawing.Point(200, 25);
+            this.btnInventario.Name = "btnInventario";
+            this.btnInventario.Size = new System.Drawing.Size(135, 180);
+            this.btnInventario.TabIndex = 29;
+            this.btnInventario.Text = "Lista productos";
+            this.btnInventario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnInventario.UseVisualStyleBackColor = true;
+            // 
+            // btnProducto
+            // 
+            this.btnProducto.BackgroundImage = global::App_Portomadero.Properties.Resources.caja;
+            this.btnProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnProducto.FlatAppearance.BorderSize = 0;
+            this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducto.Location = new System.Drawing.Point(17, 25);
+            this.btnProducto.Name = "btnProducto";
+            this.btnProducto.Size = new System.Drawing.Size(135, 180);
+            this.btnProducto.TabIndex = 28;
+            this.btnProducto.Text = "Producto nuevo";
+            this.btnProducto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnProducto.UseVisualStyleBackColor = true;
+            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
             // 
             // pictureBox4
             // 
@@ -338,12 +381,41 @@
             // 
             // RESERVAS
             // 
+            this.RESERVAS.Controls.Add(this.pictureBox5);
             this.RESERVAS.Location = new System.Drawing.Point(4, 22);
             this.RESERVAS.Name = "RESERVAS";
             this.RESERVAS.Size = new System.Drawing.Size(792, 370);
             this.RESERVAS.TabIndex = 4;
             this.RESERVAS.Text = "RESERVAS";
             this.RESERVAS.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::App_Portomadero.Properties.Resources.Logo_Portomadero;
+            this.pictureBox5.Location = new System.Drawing.Point(8, 253);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(144, 109);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 28;
+            this.pictureBox5.TabStop = false;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(792, 370);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "INFORMES";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(792, 370);
+            this.tabPage2.TabIndex = 6;
+            this.tabPage2.Text = "ACERCA DE";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -365,17 +437,9 @@
             this.btnSalir.Size = new System.Drawing.Size(34, 35);
             this.btnSalir.TabIndex = 29;
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // ACERCA_DE
-            // 
-            this.ACERCA_DE.Location = new System.Drawing.Point(4, 22);
-            this.ACERCA_DE.Name = "ACERCA_DE";
-            this.ACERCA_DE.Size = new System.Drawing.Size(792, 370);
-            this.ACERCA_DE.TabIndex = 5;
-            this.ACERCA_DE.Text = "ACERCA DE";
-            this.ACERCA_DE.UseVisualStyleBackColor = true;
-            // 
-            // Menu
+            // fmrMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +449,7 @@
             this.Controls.Add(this.tcControl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Menu";
+            this.Name = "fmrMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.panel1.ResumeLayout(false);
@@ -399,6 +463,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.INVENTARIO.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.RESERVAS.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -407,7 +473,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialTabSelector tsControl;
         private MaterialSkin.Controls.MaterialTabControl tcControl;
         private System.Windows.Forms.TabPage HOME;
         private System.Windows.Forms.TabPage VENTA;
@@ -430,6 +495,11 @@
         private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage RESERVAS;
-        private System.Windows.Forms.TabPage ACERCA_DE;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnProducto;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button btnInventario;
     }
 }

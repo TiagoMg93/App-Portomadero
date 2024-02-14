@@ -169,13 +169,13 @@ namespace App_Portomadero
         {
             clsFactura factura = new clsFactura();
             DataTable dt = new DataTable();
-            dt = factura.consultarInventario(tbProducto.Text);
             if(tbProducto.Text != "")
             {
                 if (tbCantidad.Text != "")
                 {
                     if (float.TryParse((tbCantidad.Text), out _))
                     {
+                        dt = factura.consultarInventario(tbProducto.Text);
                         if (float.Parse(dt.Rows[0][0].ToString()) < float.Parse(tbCantidad.Text))
                         {
                             MessageBox.Show("La cantidad ingresada excede el inventario existente del articulo");

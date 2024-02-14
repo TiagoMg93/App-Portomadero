@@ -90,17 +90,35 @@
     <Compile Include="fmrImprimir.designer.cs">
       <DependentUpon>fmrImprimir.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.cs">
+    <Compile Include="fmrInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <Compile Include="fmrInicio.Designer.cs">
+      <DependentUpon>fmrInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="fmrListaFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="fmrListaFacturas.Designer.cs">
+      <DependentUpon>fmrListaFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrMenu.Designer.cs">
+      <DependentUpon>fmrMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrPedido.designer.cs">
+      <DependentUpon>fmrPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrProducto.designer.cs">
+      <DependentUpon>fmrProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,11 +128,20 @@
     <EmbeddedResource Include="fmrImprimir.resx">
       <DependentUpon>fmrImprimir.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <EmbeddedResource Include="fmrInicio.resx">
+      <DependentUpon>fmrInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="fmrListaFacturas.resx">
+      <DependentUpon>fmrListaFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrMenu.resx">
+      <DependentUpon>fmrMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrPedido.resx">
+      <DependentUpon>fmrPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrProducto.resx">
+      <DependentUpon>fmrProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -183,7 +210,16 @@
     <None Include="Resources\avatar.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\recuperacion-de-datos.png" />
+    <None Include="Resources\Producto-sin-imagen.jpg" />
+    <None Include="Resources\subir.png" />
+    <None Include="Resources\sin-fotografia.png" />
+    <None Include="Resources\inventario.png" />
     <None Include="Resources\ahorrar.png" />
+    <None Include="Resources\caja.png" />
+    <None Include="Resources\borrar.png" />
+    <None Include="Resources\anadir-a-la-cesta.png" />
+    <None Include="Resources\busqueda.png" />
     <Content Include="Resources\camara.png" />
     <None Include="Resources\perdida-de-dinero.png" />
     <None Include="Resources\impresora.png" />

@@ -11,10 +11,10 @@ using Capa_Logica;
 
 namespace App_Portomadero
 {
-    public partial class Inicio : Form
+    public partial class fmrInicio : Form
     {
         int intentos = 0; //Se controla el ingreso de usuarios con un número limitado de intentos
-        public Inicio()
+        public fmrInicio()
         {
             InitializeComponent();
         }

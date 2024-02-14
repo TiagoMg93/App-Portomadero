@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsFactura.cs" />
+    <Compile Include="clsPedido.cs" />
+    <Compile Include="clsProducto.cs" />
     <Compile Include="cl_Inicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

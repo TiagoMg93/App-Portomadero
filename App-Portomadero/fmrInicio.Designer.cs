@@ -1,6 +1,6 @@
 ﻿namespace App_Portomadero
 {
-    partial class Inicio
+    partial class fmrInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.

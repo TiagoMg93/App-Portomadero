@@ -33,6 +33,7 @@
             this.lbNombre = new System.Windows.Forms.Label();
             this.tbProducto = new System.Windows.Forms.TextBox();
             this.tbCantidad = new System.Windows.Forms.TextBox();
+            this.btnCantidad = new System.Windows.Forms.Button();
             this.flpCategorias = new System.Windows.Forms.FlowLayoutPanel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.flpProductos = new System.Windows.Forms.FlowLayoutPanel();
@@ -63,7 +64,6 @@
             this.lbNumFac = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnCantidad = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.flpCategorias.SuspendLayout();
             this.flpProductos.SuspendLayout();
@@ -123,6 +123,22 @@
             this.tbCantidad.Size = new System.Drawing.Size(96, 29);
             this.tbCantidad.TabIndex = 3;
             // 
+            // btnCantidad
+            // 
+            this.btnCantidad.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCantidad.BackgroundImage = global::App_Portomadero.Properties.Resources.perdida_de_dinero;
+            this.btnCantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCantidad.FlatAppearance.BorderSize = 0;
+            this.btnCantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCantidad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCantidad.Location = new System.Drawing.Point(1030, 72);
+            this.btnCantidad.Name = "btnCantidad";
+            this.btnCantidad.Size = new System.Drawing.Size(60, 50);
+            this.btnCantidad.TabIndex = 4;
+            this.btnCantidad.UseVisualStyleBackColor = false;
+            this.btnCantidad.Click += new System.EventHandler(this.btnCantidad_Click);
+            // 
             // flpCategorias
             // 
             this.flpCategorias.AllowDrop = true;
@@ -174,7 +190,7 @@
             // dgvFactura
             // 
             this.dgvFactura.AllowUserToAddRows = false;
-            this.dgvFactura.BackgroundColor = System.Drawing.SystemColors.Highlight;
+            this.dgvFactura.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumFactura,
@@ -435,22 +451,6 @@
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnCantidad
-            // 
-            this.btnCantidad.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCantidad.BackgroundImage = global::App_Portomadero.Properties.Resources.perdida_de_dinero;
-            this.btnCantidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCantidad.FlatAppearance.BorderSize = 0;
-            this.btnCantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCantidad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCantidad.Location = new System.Drawing.Point(1030, 72);
-            this.btnCantidad.Name = "btnCantidad";
-            this.btnCantidad.Size = new System.Drawing.Size(60, 50);
-            this.btnCantidad.TabIndex = 4;
-            this.btnCantidad.UseVisualStyleBackColor = false;
-            this.btnCantidad.Click += new System.EventHandler(this.btnCantidad_Click);
             // 
             // fmrFactura
             // 
