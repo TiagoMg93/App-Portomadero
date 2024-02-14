@@ -1,0 +1,9 @@
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\bin\Debug\Capa_Logica.dll
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\bin\Debug\Capa_Logica.pdb
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\bin\Debug\Capa_Datos.dll
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\bin\Debug\Capa_Datos.pdb
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\obj\Debug\Capa_Logica.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\obj\Debug\Capa_Logica.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\obj\Debug\Capa_Logica.csproj.CopyComplete
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\obj\Debug\Capa_Logica.dll
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Logica\obj\Debug\Capa_Logica.pdb

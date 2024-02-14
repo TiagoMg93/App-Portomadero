@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\obj\Debug\Capa_Datos.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\obj\Debug\Capa_Datos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\Usuario\Desktop\Proyectos en C# Visual Studio 2017\Aplicación para restaurante\App-Portomadero\App-Portomadero\Capa_Datos\obj\Debug\Capa_Datos.pdb
