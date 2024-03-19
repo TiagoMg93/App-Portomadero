@@ -18,12 +18,14 @@ namespace Capa_Logica
         public string Pd_Precio { get; set; }
         public string Pd_Cantidad { get; set; }
         public string Pd_Unidad{ get; set; }
+        public string Pd_Usuario { get; set; }
 
+        public string Pd_CentroCostos { get; set; }
         public void agregarProducto()
         {
             try
             {
-                string sentencia = $"INSERT INTO tbProductos (Nombre,Categoria,Foto,Costo,Precio,Cantidad,Unidad) VALUES ('{Pd_Nombre}','{Pd_Categoria}','{Pd_Foto}','{Pd_Costo}','{Pd_Precio}','{Pd_Cantidad}','{Pd_Unidad}')";
+                string sentencia = $"INSERT INTO tbProductos (Nombre,Categoria,Foto,Costo,Precio,Cantidad,Unidad,Usuario_modifica,Centro) VALUES ('{Pd_Nombre}','{Pd_Categoria}','{Pd_Foto}','{Pd_Costo}','{Pd_Precio}','{Pd_Cantidad}','{Pd_Unidad}','{Pd_Usuario}','{Pd_CentroCostos}')";
                 Cls_Acceso_Datos Acceso = new Cls_Acceso_Datos();
                 Acceso.EjecutarComando(sentencia);
             }
@@ -37,7 +39,7 @@ namespace Capa_Logica
         {
             try
             {
-                string sentencia = $"UPDATE tbProductos SET Categoria = '{Pd_Categoria}',Foto = '{Pd_Foto}',Costo = '{Pd_Costo}', Precio = '{Pd_Precio}', Cantidad ='{Pd_Cantidad}', Unidad = '{Pd_Unidad}' WHERE Codigo = '{ID}'";
+                string sentencia = $"UPDATE tbProductos SET Categoria = '{Pd_Categoria}',Foto = '{Pd_Foto}',Costo = '{Pd_Costo}', Precio = '{Pd_Precio}', Cantidad ='{Pd_Cantidad}', Unidad = '{Pd_Unidad}',Usuario_modifica = '{Pd_Usuario}',Centro = '{Pd_CentroCostos}' WHERE Codigo = '{ID}'";
                 Cls_Acceso_Datos Acceso = new Cls_Acceso_Datos();
                 Acceso.EjecutarComando(sentencia);
             }
@@ -87,6 +89,36 @@ namespace Capa_Logica
             catch (Exception ex)
             {
                 throw new Exception("Error al cargar las categorias " + ex);
+            }
+        }
+        public DataTable cargarProductos()
+        {
+            try
+            {
+                string sentencia = $"SELECT Codigo,Nombre,Categoria,Costo,Precio,Cantidad FROM tbProductos";
+                Cls_Acceso_Datos cls_Acceso = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                data = cls_Acceso.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los productos " + ex);
+            }
+        }
+        public DataTable cargarCentroCostos()
+        {
+            try
+            {
+                string sentencia = $"SELECT CentroCostos from tbCentroCostos";
+                Cls_Acceso_Datos cls_Acceso = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                data = cls_Acceso.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los productos " + ex);
             }
         }
     }

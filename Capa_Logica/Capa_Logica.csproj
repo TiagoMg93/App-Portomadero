@@ -41,9 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clcClientes.cs" />
+    <Compile Include="clRoles.cs" />
+    <Compile Include="clsCargos.cs" />
+    <Compile Include="clsCategorias.cs" />
+    <Compile Include="clsConfigRes.cs" />
+    <Compile Include="clsEmpleados.cs" />
     <Compile Include="clsFactura.cs" />
+    <Compile Include="clsIngredientes.cs" />
+    <Compile Include="clsInventario.cs" />
+    <Compile Include="clsMesas.cs" />
     <Compile Include="clsPedido.cs" />
     <Compile Include="clsProducto.cs" />
+    <Compile Include="clsReceta.cs" />
+    <Compile Include="clsReserva.cs" />
+    <Compile Include="clsUsuarios.cs" />
     <Compile Include="cl_Inicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

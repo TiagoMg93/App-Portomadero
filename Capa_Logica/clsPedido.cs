@@ -15,7 +15,7 @@ namespace Capa_Logica
         {
             try
             {
-                string sentencia = "SELECT Numero from tbMesa where Estado = 'Disponible'";
+                string sentencia = "SELECT Nombre from tbMesas where Estado = 'Disponible'";
                 Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
                 DataTable dt = new DataTable();
                 dt = acceso_Datos.EjecutarConsulta(sentencia);
@@ -154,6 +154,124 @@ namespace Capa_Logica
             catch (Exception ex)
             {
                 throw new Exception("No se pudo cambiar la mesa " + ex);
+            }
+        }
+        public DataTable consultarPedidos()
+        {
+            try
+            {
+                string sentencia = $"select ID,Mesero,Mesa,Estado,Pago from tbPedidos where Estado = 'En proceso' group by ID,Mesero,Mesa,Estado,Pago";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                DataTable dt = new DataTable();
+                dt = acceso_Datos.EjecutarConsulta(sentencia);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logro cargar los pedido " + ex);
+            }
+        }
+        public DataTable cargarTodasMesas()
+        {
+            try
+            {
+                string sentencia = "SELECT Numero from tbMesa";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                DataTable dt = new DataTable();
+                dt = acceso_Datos.EjecutarConsulta(sentencia);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logran cargar las mesas disponibles " + ex);
+            }
+        }
+        public DataTable filtrarMesero(string nombre)
+        {
+            try
+            {
+                string sentencia = $"select ID,Mesero,Mesa,Estado,Pago from tbPedidos where Mesero = '{nombre}' group by ID,Mesero,Mesa,Estado,Pago";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                DataTable dt = new DataTable();
+                dt = acceso_Datos.EjecutarConsulta(sentencia);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logran cargar los meseros " + ex);
+            }
+        }
+        public DataTable filtrarMesa(string numero)
+        {
+            try
+            {
+                string sentencia = $"select ID,Mesero,Mesa,Estado,Pago from tbPedidos where Mesa = '{numero}' group by ID,Mesero,Mesa,Estado,Pago";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                DataTable dt = new DataTable();
+                dt = acceso_Datos.EjecutarConsulta(sentencia);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logran cargar las mesas " + ex);
+            }
+        }
+        public DataTable filtrarEstado(string estado)
+        {
+            try
+            {
+                string sentencia = $"select ID,Mesero,Mesa,Estado,Pago from tbPedidos where Estado = '{estado}' group by ID,Mesero,Mesa,Estado,Pago";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                DataTable dt = new DataTable();
+                dt = acceso_Datos.EjecutarConsulta(sentencia);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logran cargar el estado de los pedidos " + ex);
+            }
+        }
+        public void actualizarEstado(string id)
+        {
+            try
+            {
+                string sentencia = $"Update tbPedidos set Estado = 'Terminado' where ID = '{id}'";
+                Cls_Acceso_Datos acceso_Datos = new Cls_Acceso_Datos();
+                acceso_Datos.EjecutarComando(sentencia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se logra actualizar el estado del pedido " + ex);
+            }
+        }
+        public DataTable consultarHorario(string diaHoy)
+        {
+            try
+            {
+                string sentencia = $"Select Entrada,Salida,Horas,Minutos from tbHorario where Dia = '{diaHoy}'";
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable table = new DataTable();
+                table = datos.EjecutarConsulta(sentencia);
+                return table;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("No se pudo actualizar la zona horaria del dia de hoy " + ex);
+            }
+        }
+        public DataTable consultarEspacios(string fecha, string hora)
+        {
+            try
+            {
+                DataTable data = new DataTable();
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                string sentencia = $"Select Espacio from tbReservas where Fecha = '{fecha}' and Hora = '{hora}'";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo cargar la información de las reservas de la fecha seleccionada " + ex);
             }
         }
     }

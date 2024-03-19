@@ -16,11 +16,15 @@ namespace App_Portomadero
     {
         int dato;
         string product;
-        public fmrProducto(int entrada,string nombre)
+        string usuario;
+        string rol;
+        public fmrProducto(int entrada,string nombre,string user,string role)
         {
             InitializeComponent();
             dato = entrada;
             product = nombre;
+            usuario = user;
+            rol = role;
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -51,7 +55,12 @@ namespace App_Portomadero
             {
                 cbCategoria.Items.Add(data.Rows[fila][0].ToString());
             }
-            if(dato == 0)
+            data = producto.cargarCentroCostos();
+            for (int fila = 0; fila < data.Rows.Count; fila++)
+            {
+                cbCentro.Items.Add(data.Rows[fila][0].ToString());
+            }
+            if (dato == 0)
             {
                 btnBorrar.Visible = false;
                 tbNombre.Enabled = true;
@@ -61,7 +70,6 @@ namespace App_Portomadero
                 try
                 {
                     btnBorrar.Visible = true;
-                    btnAgregar.Text = "EDITAR";
                     tbNombre.Enabled = false;
                     data = producto.cargarDatos(product);
                     dato = int.Parse(data.Rows[0][0].ToString());
@@ -74,6 +82,7 @@ namespace App_Portomadero
                     tbVenta.Text = data.Rows[0][5].ToString();
                     tbCantidad.Text = data.Rows[0][6].ToString();
                     cbUnidad.Text = data.Rows[0][7].ToString();
+                    cbCentro.Text = data.Rows[0][9].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -115,6 +124,8 @@ namespace App_Portomadero
                             producto.Pd_Precio = tbVenta.Text;
                             producto.Pd_Cantidad = tbCantidad.Text;
                             producto.Pd_Unidad = cbUnidad.Text;
+                            producto.Pd_Usuario = usuario;
+                            producto.Pd_CentroCostos = cbCentro.Text;
                             producto.agregarProducto();
                             MessageBox.Show("El producto fue agregado exitosamente");
                             Limpiar();
@@ -134,6 +145,8 @@ namespace App_Portomadero
                         producto.Pd_Precio = tbVenta.Text;
                         producto.Pd_Cantidad = tbCantidad.Text;
                         producto.Pd_Unidad = cbUnidad.Text;
+                        producto.Pd_Usuario = usuario;
+                        producto.Pd_CentroCostos = cbCentro.Text;
                         producto.editarProducto(dato);
                         MessageBox.Show("El producto fue editado correctamente");
                         Limpiar();
@@ -156,10 +169,17 @@ namespace App_Portomadero
             DialogResult result = MessageBox.Show("Deseas eliminar este producto?", "CONFIRMACION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(result == DialogResult.Yes)
             {
-                clsProducto producto = new clsProducto();
-                producto.borrarProducto(dato);
-                MessageBox.Show("El producto ha sido eliminado");
-                Close();
+                if(rol == "Administrador")
+                {
+                    clsProducto producto = new clsProducto();
+                    producto.borrarProducto(dato);
+                    MessageBox.Show("El producto ha sido eliminado");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Solo los administradores pueden eliminar un producto");
+                }
             }
         }
         private void Limpiar()
@@ -172,6 +192,7 @@ namespace App_Portomadero
             cbCategoria.SelectedIndex = 0;
             cbUnidad.SelectedIndex = 0;
             pbImagen.Image = null;
+            cbCentro.SelectedIndex = 0;
         }
     }
 }

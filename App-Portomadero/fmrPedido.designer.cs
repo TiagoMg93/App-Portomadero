@@ -123,7 +123,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 86);
+            this.label3.Location = new System.Drawing.Point(14, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 96;
@@ -135,9 +135,9 @@
             this.cbMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMesa.FormattingEnabled = true;
-            this.cbMesa.Location = new System.Drawing.Point(127, 80);
+            this.cbMesa.Location = new System.Drawing.Point(75, 80);
             this.cbMesa.Name = "cbMesa";
-            this.cbMesa.Size = new System.Drawing.Size(60, 32);
+            this.cbMesa.Size = new System.Drawing.Size(150, 32);
             this.cbMesa.TabIndex = 98;
             // 
             // label2

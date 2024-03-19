@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 using Capa_Logica;
 
 namespace App_Portomadero
@@ -16,6 +17,8 @@ namespace App_Portomadero
         int entrada;
         int id;
         string mesas;
+        List<DateTime> listaHoraInicial = new List<DateTime>() { };
+        List<DateTime> listaHoraFinal = new List<DateTime>() { };
         public fmrPedido(int num, int ID)
         {
             InitializeComponent();
@@ -46,6 +49,7 @@ namespace App_Portomadero
                     {
                         cbMesa.Items.Add(data.Rows[fila][0].ToString());
                     }
+                    consultarReserva();
                     data.Rows.Clear();
                     data = pedido.cargarEmpleados();
                     for (int fila = 0; fila < data.Rows.Count; fila++)
@@ -77,11 +81,11 @@ namespace App_Portomadero
                 try
                 {
                     btnFacturar.Visible = true;
+                    btnRegistrar.Text = "MODIFICAR PEDIDO";
                     data = pedido.cargarMesas();
                     for (int fila = 0; fila < data.Rows.Count; fila++)
                     {
                         cbMesa.Items.Add(data.Rows[fila][0].ToString());
-                        mesas = data.Rows[fila][0].ToString();
                     }
                     data.Rows.Clear();
                     data = pedido.cargarEmpleados();
@@ -106,7 +110,9 @@ namespace App_Portomadero
                     data.Rows.Clear();
                     data = pedido.consultarPedido(id);
                     lbNum.Text = data.Rows[0][0].ToString();
+                    cbMesa.Items.Add(data.Rows[0][3].ToString());
                     cbMesa.Text = data.Rows[0][3].ToString();
+                    mesas = data.Rows[0][3].ToString();
                     cbMesero.Text = data.Rows[0][2].ToString();
                     for(int fila = 0; fila < data.Rows.Count; fila++)
                     {
@@ -259,5 +265,74 @@ namespace App_Portomadero
             fmrFactura factura = new fmrFactura(cbMesero.Text,dgvPedido,lbNum.Text);
             factura.Show();
         }
+        private void consultarReserva()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                clsPedido pedido = new clsPedido();
+                DateTime time = DateTime.Now;
+                string dia = time.ToString("dddd");
+                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                table = pedido.consultarHorario(ti.ToTitleCase(dia));
+                TimeSpan horaInicio = TimeSpan.Parse(table.Rows[0][0].ToString());
+                TimeSpan horaFinal = TimeSpan.Parse(table.Rows[0][1].ToString());
+                TimeSpan duracion = new TimeSpan(int.Parse(table.Rows[0][2].ToString()), int.Parse(table.Rows[0][3].ToString()), 0);
+                TimeSpan intervaloActual = horaInicio;
+                listaHoraInicial.Clear();
+                listaHoraFinal.Clear();
+                while(intervaloActual <= horaFinal)
+                {
+                    TimeSpan intervaloSiguiente = intervaloActual.Add(duracion);
+                    listaHoraInicial.Add(DateTime.Parse(intervaloActual.ToString()));
+                    listaHoraFinal.Add(DateTime.Parse(intervaloSiguiente.ToString()));
+                    intervaloActual = intervaloSiguiente;
+                }
+                int recorrer = 0;
+                while (recorrer < listaHoraInicial.Count)
+                {
+                    if (time.Hour >= listaHoraInicial[recorrer].Hour && time.Hour < listaHoraFinal[recorrer].Hour)
+                    {
+                        table = pedido.consultarEspacios(time.ToShortDateString(), extraerHora(listaHoraInicial[recorrer]));
+                        foreach (DataRow row in table.Rows)
+                        {
+                            cbMesa.Items.Remove(row[0].ToString());
+                        }
+                        recorrer = listaHoraInicial.Count;
+                    }
+                    else
+                    {
+                        recorrer += 1;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("No se pudo establecer la información de las reservas ");
+            }
+        }
+        public string extraerHora(DateTime date)
+        {
+            string hora;
+            string minutos;
+            if (date.Hour < 10)
+            {
+                hora = "0" + date.Hour.ToString();
+            }
+            else
+            {
+                hora = date.Hour.ToString();
+            }
+            if (date.Minute < 10)
+            {
+                minutos = "0" + date.Minute.ToString();
+            }
+            else
+            {
+                minutos = date.Minute.ToString();
+            }
+            return $"{hora}:{minutos}";
+        }
+
     }
 }

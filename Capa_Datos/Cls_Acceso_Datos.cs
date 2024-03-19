@@ -73,25 +73,18 @@ namespace Capa_AccesoDatos
         public string EjecutarComando(string sentencia) //un parametro para los comandos insertar,modificar o eliminar
         {
             string salida = "";
-            try
+            int retornado;
+            AbrirBD();
+            cmd = new SqlCommand(sentencia, conexion);
+            retornado = cmd.ExecuteNonQuery();
+            CerrarBD();
+            if (retornado > 0)
             {
-                int retornado;
-                AbrirBD();
-                cmd = new SqlCommand(sentencia, conexion);
-                retornado = cmd.ExecuteNonQuery();
-                CerrarBD();
-                if (retornado > 0)
-                {
-                    salida = "Los datos fueron actualizados";
-                }
-                else
-                {
-                    salida = "los datos no fueron actualizados";
-                }
+                salida = "Los datos fueron actualizados";
             }
-            catch (Exception ex)
+            else
             {
-                salida = "ERROR: falló la operación" + ex;
+                salida = "los datos no fueron actualizados";
             }
             return salida;
         }

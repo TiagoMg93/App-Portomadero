@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvFactura = new System.Windows.Forms.DataGridView();
+            this.NumFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.rbtFecha = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbtCliente = new MaterialSkin.Controls.MaterialRadioButton();
@@ -44,13 +51,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.cbProducto = new System.Windows.Forms.ComboBox();
             this.rbtProducto = new MaterialSkin.Controls.MaterialRadioButton();
-            this.NumFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +72,57 @@
             this.dgvFactura.ReadOnly = true;
             this.dgvFactura.Size = new System.Drawing.Size(713, 221);
             this.dgvFactura.TabIndex = 14;
+            this.dgvFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellContentClick);
+            // 
+            // NumFactura
+            // 
+            this.NumFactura.HeaderText = "Número";
+            this.NumFactura.Name = "NumFactura";
+            this.NumFactura.ReadOnly = true;
+            this.NumFactura.Width = 70;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            this.Subtotal.Width = 80;
+            // 
+            // Vendedor
+            // 
+            this.Vendedor.HeaderText = "Vendedor";
+            this.Vendedor.Name = "Vendedor";
+            this.Vendedor.ReadOnly = true;
+            this.Vendedor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Vendedor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Vendedor.Width = 140;
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 140;
+            // 
+            // Ver
+            // 
+            this.Ver.HeaderText = "Ver";
+            this.Ver.Name = "Ver";
+            this.Ver.ReadOnly = true;
+            this.Ver.Width = 60;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            this.Borrar.Width = 60;
             // 
             // label1
             // 
@@ -87,7 +138,7 @@
             // 
             this.rbtFecha.AutoSize = true;
             this.rbtFecha.Depth = 0;
-            this.rbtFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbtFecha.Font = new System.Drawing.Font("Roboto", 10F);
             this.rbtFecha.Location = new System.Drawing.Point(118, 333);
             this.rbtFecha.Margin = new System.Windows.Forms.Padding(0);
             this.rbtFecha.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -105,7 +156,7 @@
             // 
             this.rbtCliente.AutoSize = true;
             this.rbtCliente.Depth = 0;
-            this.rbtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbtCliente.Font = new System.Drawing.Font("Roboto", 10F);
             this.rbtCliente.Location = new System.Drawing.Point(118, 417);
             this.rbtCliente.Margin = new System.Windows.Forms.Padding(0);
             this.rbtCliente.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -123,7 +174,7 @@
             // 
             this.rbtVendedor.AutoSize = true;
             this.rbtVendedor.Depth = 0;
-            this.rbtVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbtVendedor.Font = new System.Drawing.Font("Roboto", 10F);
             this.rbtVendedor.Location = new System.Drawing.Point(118, 377);
             this.rbtVendedor.Margin = new System.Windows.Forms.Padding(0);
             this.rbtVendedor.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -141,7 +192,7 @@
             // 
             this.rbtNumero.AutoSize = true;
             this.rbtNumero.Depth = 0;
-            this.rbtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rbtNumero.Font = new System.Drawing.Font("Roboto", 10F);
             this.rbtNumero.Location = new System.Drawing.Point(118, 292);
             this.rbtNumero.Margin = new System.Windows.Forms.Padding(0);
             this.rbtNumero.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -159,12 +210,12 @@
             // 
             this.lbInicial.AutoSize = true;
             this.lbInicial.Depth = 0;
-            this.lbInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbInicial.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbInicial.Location = new System.Drawing.Point(373, 368);
             this.lbInicial.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbInicial.Name = "lbInicial";
-            this.lbInicial.Size = new System.Drawing.Size(31, 18);
+            this.lbInicial.Size = new System.Drawing.Size(31, 19);
             this.lbInicial.TabIndex = 22;
             this.lbInicial.Text = "De:";
             this.lbInicial.Visible = false;
@@ -173,12 +224,12 @@
             // 
             this.lbFinal.AutoSize = true;
             this.lbFinal.Depth = 0;
-            this.lbFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbFinal.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbFinal.Location = new System.Drawing.Point(578, 368);
             this.lbFinal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbFinal.Name = "lbFinal";
-            this.lbFinal.Size = new System.Drawing.Size(51, 18);
+            this.lbFinal.Size = new System.Drawing.Size(53, 19);
             this.lbFinal.TabIndex = 23;
             this.lbFinal.Text = "Hasta:";
             this.lbFinal.Visible = false;
@@ -282,56 +333,6 @@
             this.rbtProducto.Text = "Producto";
             this.rbtProducto.UseVisualStyleBackColor = true;
             this.rbtProducto.CheckedChanged += new System.EventHandler(this.rbtProducto_CheckedChanged);
-            // 
-            // NumFactura
-            // 
-            this.NumFactura.HeaderText = "Número";
-            this.NumFactura.Name = "NumFactura";
-            this.NumFactura.ReadOnly = true;
-            this.NumFactura.Width = 70;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            this.Subtotal.Width = 80;
-            // 
-            // Vendedor
-            // 
-            this.Vendedor.HeaderText = "Vendedor";
-            this.Vendedor.Name = "Vendedor";
-            this.Vendedor.ReadOnly = true;
-            this.Vendedor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Vendedor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Vendedor.Width = 140;
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            this.Cliente.Width = 140;
-            // 
-            // Ver
-            // 
-            this.Ver.HeaderText = "Ver";
-            this.Ver.Name = "Ver";
-            this.Ver.ReadOnly = true;
-            this.Ver.Width = 60;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            this.Borrar.Width = 60;
             // 
             // fmrListaFacturas
             // 

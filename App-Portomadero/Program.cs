@@ -16,7 +16,7 @@ namespace App_Portomadero
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fmrMenu("Administrador","Santiago Muñoz"));
+            Application.Run(new fmrMenu("Administrador", "smg93","Santiago Muñoz González"));
         }
     }
 }

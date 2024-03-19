@@ -50,13 +50,13 @@
             this.lbCambio = new System.Windows.Forms.Label();
             this.lbPagar = new System.Windows.Forms.Label();
             this.lbUbicacion = new System.Windows.Forms.Label();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbNomVendedor = new System.Windows.Forms.Label();
             this.lbNomCliente = new System.Windows.Forms.Label();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lbHora = new System.Windows.Forms.Label();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -279,19 +279,6 @@
             this.lbUbicacion.Text = "Parqueadero La Vega";
             this.lbUbicacion.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCerrar.FlatAppearance.BorderSize = 0;
-            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(269, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
-            this.btnCerrar.TabIndex = 42;
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -351,6 +338,20 @@
             this.lbHora.Size = new System.Drawing.Size(53, 16);
             this.lbHora.TabIndex = 48;
             this.lbHora.Text = "Fecha";
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.BackgroundImage = global::App_Portomadero.Properties.Resources.boton_de_quitar_cuadrado;
+            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCerrar.FlatAppearance.BorderSize = 0;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Location = new System.Drawing.Point(269, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.TabIndex = 42;
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // button1
             // 
@@ -470,6 +471,6 @@
         private System.Windows.Forms.Label lbNomVendedor;
         private System.Windows.Forms.Label lbNomCliente;
         private System.Windows.Forms.Label lbFecha;
-        private System.Windows.Forms.Label lbHora;
+        public System.Windows.Forms.Label lbHora;
     }
 }

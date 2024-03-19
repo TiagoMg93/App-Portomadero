@@ -72,6 +72,7 @@ namespace App_Portomadero
         private void rbtVendedor_CheckedChanged(object sender, EventArgs e)
         {
             cbProducto.Visible = true;
+            txtBuscar.Visible = false;
             cbProducto.Items.Clear();
             DataTable table = new DataTable();
             clsFactura factura = new clsFactura();
@@ -85,6 +86,7 @@ namespace App_Portomadero
         private void rbtCliente_CheckedChanged(object sender, EventArgs e)
         {
             cbProducto.Visible = true;
+            txtBuscar.Visible = false;
             cbProducto.Items.Clear();
             DataTable table = new DataTable();
             clsFactura factura = new clsFactura();
@@ -118,6 +120,8 @@ namespace App_Portomadero
                     dgvFactura.Rows[fila].Cells[3].Value = table.Rows[fila][3].ToString();
                     dgvFactura.Rows[fila].Cells[4].Value = table.Rows[fila][4].ToString();
                 }
+                rbtNumero.Checked = false;
+                txtBuscar.Visible = false;
             }
             else if(rbtFecha.Checked == true)
             {
@@ -131,32 +135,51 @@ namespace App_Portomadero
                     dgvFactura.Rows[fila].Cells[3].Value = table.Rows[fila][3].ToString();
                     dgvFactura.Rows[fila].Cells[4].Value = table.Rows[fila][4].ToString();
                 }
+                rbtFecha.Checked = false;
+                lbFinal.Visible = false;
+                lbInicial.Visible = false;
+                dtpFinal.Visible = false;
+                dtpInicial.Visible = false;
             }
             else if(rbtVendedor.Checked == true)
             {
-                table = factura.filtrarFactura("Vendedor", cbProducto.Text);
-                for (int fila = 0; fila < table.Rows.Count; fila++)
+                int filas = dgvFactura.Rows.Count;
+                int recorrer = 0;
+                while (recorrer < filas)
                 {
-                    dgvFactura.Rows.Add();
-                    dgvFactura.Rows[fila].Cells[0].Value = table.Rows[fila][0].ToString();
-                    dgvFactura.Rows[fila].Cells[1].Value = table.Rows[fila][1].ToString();
-                    dgvFactura.Rows[fila].Cells[2].Value = table.Rows[fila][2].ToString();
-                    dgvFactura.Rows[fila].Cells[3].Value = table.Rows[fila][3].ToString();
-                    dgvFactura.Rows[fila].Cells[4].Value = table.Rows[fila][4].ToString();
+                    if (dgvFactura.Rows[recorrer].Cells[3].Value.ToString() != cbProducto.Text)
+                    {
+                        dgvFactura.Rows.RemoveAt(recorrer);
+                        recorrer = 0;
+                        filas = dgvFactura.Rows.Count;
+                    }
+                    else
+                    {
+                        recorrer += 1;
+                    }
                 }
+                rbtVendedor.Checked = false;
+                cbProducto.Visible = false;
             }
             else if(rbtCliente.Checked == true)
             {
-                table = factura.filtrarFactura("Cliente", cbProducto.Text);
-                for (int fila = 0; fila < table.Rows.Count; fila++)
+                int filas = dgvFactura.Rows.Count;
+                int recorrer = 0;
+                while (recorrer < filas)
                 {
-                    dgvFactura.Rows.Add();
-                    dgvFactura.Rows[fila].Cells[0].Value = table.Rows[fila][0].ToString();
-                    dgvFactura.Rows[fila].Cells[1].Value = table.Rows[fila][1].ToString();
-                    dgvFactura.Rows[fila].Cells[2].Value = table.Rows[fila][2].ToString();
-                    dgvFactura.Rows[fila].Cells[3].Value = table.Rows[fila][3].ToString();
-                    dgvFactura.Rows[fila].Cells[4].Value = table.Rows[fila][4].ToString();
+                    if (dgvFactura.Rows[recorrer].Cells[4].Value.ToString() != cbProducto.Text)
+                    {
+                        dgvFactura.Rows.RemoveAt(recorrer);
+                        recorrer = 0;
+                        filas = dgvFactura.Rows.Count;
+                    }
+                    else
+                    {
+                        recorrer += 1;
+                    }
                 }
+                rbtCliente.Checked = false;
+                cbProducto.Visible = false;
             }
             else if(rbtProducto.Checked == true)
             {
@@ -170,12 +193,17 @@ namespace App_Portomadero
                     dgvFactura.Rows[fila].Cells[3].Value = table.Rows[fila][3].ToString();
                     dgvFactura.Rows[fila].Cells[4].Value = table.Rows[fila][4].ToString();
                 }
+                rbtProducto.Checked = false;
+                cbProducto.Visible = false;
             }
+            txtBuscar.Text = "";
+            cbProducto.Text = "";
         }
 
         private void rbtProducto_CheckedChanged(object sender, EventArgs e)
         {
             cbProducto.Visible = true;
+            txtBuscar.Visible = false;
             cbProducto.Items.Clear();
             DataTable table = new DataTable();
             clsFactura factura = new clsFactura();
@@ -183,6 +211,54 @@ namespace App_Portomadero
             for (int fila = 0; fila < table.Rows.Count; fila++)
             {
                 cbProducto.Items.Add(table.Rows[fila][0].ToString());
+            }
+        }
+
+        private void dgvFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && dgvFactura.Columns[e.ColumnIndex] is DataGridViewButtonColumn && dgvFactura.Columns[e.ColumnIndex].Name == "Ver")
+            {
+                string id = dgvFactura.Rows[e.RowIndex].Cells[0].Value.ToString();
+                DataTable table = new DataTable();
+                DataTable data = new DataTable();
+                DataGridView productos = new DataGridView();
+                clsFactura factura = new clsFactura();
+                data = factura.verProductos(id);
+                productos.Columns.Add("Producto", "Producto");
+                productos.Columns.Add("Cantidad", "Cantidad");
+                productos.Columns.Add("Precio", "Precio");
+                productos.Columns.Add("Subtotal", "Subtotal");
+                for (int fila = 0; fila < data.Rows.Count; fila++)
+                {
+                    productos.Rows.Add();
+                    productos.Rows[fila].Cells[0].Value = data.Rows[fila][0].ToString();
+                    productos.Rows[fila].Cells[1].Value = data.Rows[fila][1].ToString();
+                    productos.Rows[fila].Cells[2].Value = data.Rows[fila][2].ToString();
+                    productos.Rows[fila].Cells[3].Value = data.Rows[fila][3].ToString();
+                }
+                table = factura.consultarFactura(id);
+                fmrImprimir imprimir = new fmrImprimir(table.Rows[0][0].ToString(), table.Rows[0][1].ToString(), id, productos, table.Rows[0][2].ToString(), table.Rows[0][3].ToString(), table.Rows[0][4].ToString());
+                imprimir.lbHora.Text = table.Rows[0][5].ToString();
+                imprimir.Show();
+            }
+            else if(e.RowIndex >= 0 && dgvFactura.Columns[e.ColumnIndex] is DataGridViewButtonColumn && dgvFactura.Columns[e.ColumnIndex].Name == "Borrar")
+            {
+                DialogResult dialogo = MessageBox.Show("¿Seguro que deseas eliminar esta factura?","Advertencia",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+                if(dialogo == DialogResult.Yes)
+                {
+                    string id = dgvFactura.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    clsFactura factura = new clsFactura();
+                    try
+                    {
+                        factura.eliminarFactura(id);
+                        MessageBox.Show("Se ha eliminado la factura correctamente");
+                        btnRestaurar_Click(sender, e);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("No se pudo eliminar la factura");
+                    }
+                }
             }
         }
     }

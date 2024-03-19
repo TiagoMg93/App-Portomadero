@@ -56,9 +56,16 @@ namespace App_Portomadero
             tbVendedor.Text = usuario;
             dt.Clear();
             dt = factura.cargarNumFac();
-            int fac = int.Parse(dt.Rows[0][0].ToString()) + 1;
-            lbNumFac.Text = fac.ToString();
-            if(view != null)
+            try
+            {
+                int num = int.Parse(dt.Rows[0][0].ToString()) + 1;
+                lbNumFac.Text = num.ToString();
+            }
+            catch
+            {
+                lbNumFac.Text = "1";
+            }
+            if (view != null)
             {
                 DataTable dataTable = new DataTable();
                 dataTable = factura.productoPendiente(identificador);
@@ -113,7 +120,6 @@ namespace App_Portomadero
             lbProducto.Click += new EventHandler(Button_Click);
             lbProducto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             lbProducto.FlatStyle = FlatStyle.Flat;
-            //lbProducto.BackColor = System.Drawing.Color.MediumBlue;
             lbProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
             lbProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             Panel pnlProducto = new Panel();
@@ -302,7 +308,7 @@ namespace App_Portomadero
                                 cantidad = float.Parse(dt.Rows[0][0].ToString()) - float.Parse(dgvFactura.Rows[fila].Cells[1].Value.ToString());
                                 factura.Pd_Cantidad = cantidad.ToString();
                                 factura.actualizarInventario(dgvFactura.Rows[fila].Cells[0].Value.ToString());
-                                factura.agregarFactura(lbNumFac.Text, dgvFactura.Rows[fila].Cells[0].Value.ToString(), dgvFactura.Rows[fila].Cells[1].Value.ToString(), dgvFactura.Rows[fila].Cells[3].Value.ToString(), tbVendedor.Text, cbCliente.Text);
+                                factura.agregarFactura(lbNumFac.Text, dgvFactura.Rows[fila].Cells[0].Value.ToString(), dgvFactura.Rows[fila].Cells[1].Value.ToString(), dgvFactura.Rows[fila].Cells[3].Value.ToString(),tbCliente.Text, tbCambio.Text,tbVendedor.Text, cbCliente.Text);
                             }
                             Limpiar();
                         }
@@ -314,7 +320,7 @@ namespace App_Portomadero
                                 cantidad = float.Parse(dt.Rows[0][0].ToString()) - float.Parse(dgvFactura.Rows[fila].Cells[1].Value.ToString());
                                 factura.Pd_Cantidad = cantidad.ToString();
                                 factura.actualizarInventario(dgvFactura.Rows[fila].Cells[0].Value.ToString());
-                                factura.agregarFactura(lbNumFac.Text, dgvFactura.Rows[fila].Cells[0].Value.ToString(), dgvFactura.Rows[fila].Cells[1].Value.ToString(), dgvFactura.Rows[fila].Cells[3].Value.ToString(), tbVendedor.Text, cbCliente.Text);
+                                factura.agregarFactura(lbNumFac.Text, dgvFactura.Rows[fila].Cells[0].Value.ToString(), dgvFactura.Rows[fila].Cells[1].Value.ToString(), dgvFactura.Rows[fila].Cells[3].Value.ToString(), tbCliente.Text,tbPago.Text,tbVendedor.Text, cbCliente.Text);
                                 factura.modificarPedido(dgvFactura.Rows[fila].Cells[0].Value.ToString(), identificador);
                             }
                             Limpiar();

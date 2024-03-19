@@ -15,6 +15,8 @@ namespace Capa_Logica
         public string Pd_Cantidad { get; set; }
         public string Pd_Producto { get; set; }
         public string Pd_Subtotal { get; set; }
+        public string Pd_Pago { get; set; }
+        public string Pd_Cambio { get; set; }
         public string Pd_Vendedor { get; set; }
         public string Pd_Cliente { get; set; }
 
@@ -73,11 +75,18 @@ namespace Capa_Logica
                 DataTable pedido = new DataTable();
                 int disponible = 0;
                 data = cls_Acceso.EjecutarConsulta(sentencia);
-                sentencia = $"SELECT Cantidad FROM tbPedidos Where Producto = '{nombre}' and Pago ='No'";
+                sentencia = $"SELECT Sum(Cantidad) as Pedidos FROM tbPedidos Where Producto = '{nombre}' and Pago ='No'";
                 pedido = cls_Acceso.EjecutarConsulta(sentencia);
                 for(int fila = 0; fila < pedido.Rows.Count; fila++)
                 {
-                    disponible += int.Parse(pedido.Rows[0][fila].ToString());
+                    try
+                    {
+                        disponible += int.Parse(pedido.Rows[0][fila].ToString());
+                    }
+                    catch
+                    {
+                        disponible = 0;
+                    }
                 }
                 disponible = int.Parse(data.Rows[0][0].ToString()) - disponible;
                 data.Rows[0][0] = disponible;
@@ -146,12 +155,12 @@ namespace Capa_Logica
                 throw new Exception("Error no se pudo cargar el número de factura " + ex);
             }
         }
-        public void agregarFactura(string numFac, string producto, string cantidad,string subtotal,string vendedor, string cliente)
+        public void agregarFactura(string numFac, string producto, string cantidad,string subtotal, string pago, string cambio, string vendedor, string cliente)
         {
             try
             {
                 DateTime time = DateTime.Now;
-                string sentencia = $"INSERT INTO tbFacturas (NumFactura,Producto,Cantidad,Subtotal,Vendedor,Cliente,Fecha) values('{numFac}','{producto}','{cantidad}','{subtotal}','{vendedor}','{cliente}','{time}')";
+                string sentencia = $"INSERT INTO tbFacturas (NumFactura,Producto,Cantidad,Subtotal,Pago,Cambio,Vendedor,Cliente,Fecha) values('{numFac}','{producto}','{cantidad}','{subtotal}','{pago}','{cambio}','{vendedor}','{cliente}','{time}')";
                 Cls_Acceso_Datos cls_Acceso = new Cls_Acceso_Datos();
                 cls_Acceso.EjecutarComando(sentencia);
             }
@@ -220,47 +229,126 @@ namespace Capa_Logica
         }
         public DataTable cargarEmpleados()
         {
-            Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
-            DataTable data = new DataTable();
-            string sentencia = "select Nombre from tbEmpleados";
-            data = datos.EjecutarConsulta(sentencia);
-            return data;
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = "select Nombre from tbEmpleados";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al cargar los empleados " + ex);
+            }
         }
 
         public DataTable filtrarFactura(string filtro, string texto)
         {
-            Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
-            DataTable data = new DataTable();
-            string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where {filtro} = '{texto}' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
-            data = datos.EjecutarConsulta(sentencia);
-            return data;
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where {filtro} = '{texto}' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al filtrar las facturas " + ex);
+            }
         }
 
         public DataTable buscarFecha(string inicial, string final)
         {
-            Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
-            DataTable data = new DataTable();
-            string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where Fecha Between '{inicial}' and '{final}' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
-            data = datos.EjecutarConsulta(sentencia);
-            return data;
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where Fecha Between '{inicial}' and '{final}' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al buscar la fecha establecida " + ex);
+            }
         }
 
         public DataTable buscarNumFactura(string texto)
         {
-            Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
-            DataTable data = new DataTable();
-            string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where NumFactura like '%{texto}%' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
-            data = datos.EjecutarConsulta(sentencia);
-            return data;
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas Where NumFactura like '%{texto}%' GROUP BY NumFactura,Fecha,Vendedor,Cliente";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al buscar el número de factura " + ex);
+            }
         }
 
         public DataTable filtrarProducto(string texto)
         {
-            Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
-            DataTable data = new DataTable();
-            string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas GROUP BY NumFactura,Fecha,Vendedor,Cliente having SUM(CASE WHEN Producto = '{texto}' THEN 1 ELSE 0 END) > 0;";
-            data = datos.EjecutarConsulta(sentencia);
-            return data;
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"SELECT NumFactura, Fecha, SUM(Subtotal) AS total_factura,Vendedor,Cliente FROM tbFacturas GROUP BY NumFactura,Fecha,Vendedor,Cliente having SUM(CASE WHEN Producto = '{texto}' THEN 1 ELSE 0 END) > 0;";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al filtrar el producto " + ex);
+            }
+        }
+        public DataTable consultarFactura(string texto)
+        {
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"select Cliente,Vendedor,Sum(Subtotal) as Total,Pago,Cambio,Fecha from tbFacturas where NumFactura = '{texto}' group by Cliente,Vendedor,Pago,Cambio,Fecha";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al buscar la factura " + ex);
+            }
+        }
+        public DataTable verProductos(string texto)
+        {
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                DataTable data = new DataTable();
+                string sentencia = $"SELECT Producto,tbFacturas.Cantidad,Precio,Subtotal from tbFacturas inner join tbProductos on tbFacturas.Producto = tbProductos.Nombre where NumFactura ='{texto}'";
+                data = datos.EjecutarConsulta(sentencia);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al cargar los productos de la factura " + ex);
+            }
+        }
+
+        public void eliminarFactura(string id)
+        {
+            try
+            {
+                Cls_Acceso_Datos datos = new Cls_Acceso_Datos();
+                string sentencia = $"DELETE From tbFacturas where NumFactura = '{id}'";
+                datos.EjecutarComando(sentencia);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Error al eliminar la factura " + ex);
+            }
         }
     }
 }

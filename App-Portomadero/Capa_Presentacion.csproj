@@ -64,6 +64,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +80,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fmrEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrEmpleado.Designer.cs">
+      <DependentUpon>fmrEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrEmpleados1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrEmpleados1.Designer.cs">
+      <DependentUpon>fmrEmpleados1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrEmpleados2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrEmpleados2.Designer.cs">
+      <DependentUpon>fmrEmpleados2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrIngredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrIngredientes.Designer.cs">
+      <DependentUpon>fmrIngredientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrInventario.Designer.cs">
+      <DependentUpon>fmrInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaCargos.Designer.cs">
+      <DependentUpon>fmrListaCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaCategorias.Designer.cs">
+      <DependentUpon>fmrListaCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaClientes.Designer.cs">
+      <DependentUpon>fmrListaClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaEmpleados.Designer.cs">
+      <DependentUpon>fmrListaEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmrFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +158,47 @@
     <Compile Include="fmrListaFacturas.Designer.cs">
       <DependentUpon>fmrListaFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrListaPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaPedidos.Designer.cs">
+      <DependentUpon>fmrListaPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaProductos.Designer.cs">
+      <DependentUpon>fmrListaProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaReservas.Designer.cs">
+      <DependentUpon>fmrListaReservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrListaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrListaUsuarios.Designer.cs">
+      <DependentUpon>fmrListaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmrMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fmrMenu.Designer.cs">
       <DependentUpon>fmrMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrMesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrMesas.Designer.cs">
+      <DependentUpon>fmrMesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrModificarMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrModificarMesa.Designer.cs">
+      <DependentUpon>fmrModificarMesa.cs</DependentUpon>
     </Compile>
     <Compile Include="fmrPedido.cs">
       <SubType>Form</SubType>
@@ -120,28 +212,109 @@
     <Compile Include="fmrProducto.designer.cs">
       <DependentUpon>fmrProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrRecetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrRecetas.Designer.cs">
+      <DependentUpon>fmrRecetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrConfReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrConfReserva.Designer.cs">
+      <DependentUpon>fmrConfReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrReserva.Designer.cs">
+      <DependentUpon>fmrReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrRoles.Designer.cs">
+      <DependentUpon>fmrRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fmrEmpleado.resx">
+      <DependentUpon>fmrEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrEmpleados1.resx">
+      <DependentUpon>fmrEmpleados1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrEmpleados2.resx">
+      <DependentUpon>fmrEmpleados2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmrFactura.resx">
       <DependentUpon>fmrFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrImprimir.resx">
       <DependentUpon>fmrImprimir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fmrIngredientes.resx">
+      <DependentUpon>fmrIngredientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmrInicio.resx">
       <DependentUpon>fmrInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrInventario.resx">
+      <DependentUpon>fmrInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaCargos.resx">
+      <DependentUpon>fmrListaCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaCategorias.resx">
+      <DependentUpon>fmrListaCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaClientes.resx">
+      <DependentUpon>fmrListaClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrListaFacturas.resx">
       <DependentUpon>fmrListaFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaPedidos.resx">
+      <DependentUpon>fmrListaPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaProductos.resx">
+      <DependentUpon>fmrListaProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaReservas.resx">
+      <DependentUpon>fmrListaReservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaUsuarios.resx">
+      <DependentUpon>fmrListaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmrMenu.resx">
       <DependentUpon>fmrMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrMesas.resx">
+      <DependentUpon>fmrMesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrModificarMesa.resx">
+      <DependentUpon>fmrModificarMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrPedido.resx">
       <DependentUpon>fmrPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrProducto.resx">
       <DependentUpon>fmrProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrListaEmpleados.resx">
+      <DependentUpon>fmrListaEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrRecetas.resx">
+      <DependentUpon>fmrRecetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrConfReserva.resx">
+      <DependentUpon>fmrConfReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrReserva.resx">
+      <DependentUpon>fmrReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrRoles.resx">
+      <DependentUpon>fmrRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,6 +383,22 @@
     <None Include="Resources\avatar.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\mesa %281%29.png" />
+    <None Include="Resources\configuraciones-de-la-cuenta.png" />
+    <None Include="Resources\reloj.png" />
+    <None Include="Resources\fecha-del-calendario.png" />
+    <None Include="Resources\mesa-del-comedor.png" />
+    <None Include="Resources\lista-de-verificacion.png" />
+    <None Include="Resources\centro-de-datos.png" />
+    <None Include="Resources\libro-de-recetas.png" />
+    <None Include="Resources\ingredientes.png" />
+    <None Include="Resources\categorias.png" />
+    <None Include="Resources\nuevo-producto.png" />
+    <None Include="Resources\lupa.png" />
+    <None Include="Resources\empleado.png" />
+    <None Include="Resources\disquete.png" />
+    <None Include="Resources\empleados.png" />
+    <None Include="Resources\cerrar.png" />
     <None Include="Resources\recuperacion-de-datos.png" />
     <None Include="Resources\Producto-sin-imagen.jpg" />
     <None Include="Resources\subir.png" />
@@ -220,6 +409,10 @@
     <None Include="Resources\borrar.png" />
     <None Include="Resources\anadir-a-la-cesta.png" />
     <None Include="Resources\busqueda.png" />
+    <None Include="Resources\boton-de-quitar-cuadrado.png" />
+    <None Include="Resources\agregar-usuario.png" />
+    <None Include="Resources\agregar-usuario %281%29.png" />
+    <None Include="Resources\afuera.png" />
     <Content Include="Resources\camara.png" />
     <None Include="Resources\perdida-de-dinero.png" />
     <None Include="Resources\impresora.png" />
